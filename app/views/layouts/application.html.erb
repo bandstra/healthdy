@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Health Dynamics Attendance App</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+
+<script>
+// From http://strugglingwithruby.blogspot.com/2009/04/using-javascript-with-ruby-on-rails.html
+// Sets the form focus to the first element found in forms[0] that is a textfield or text area
+function setFocus() {
+// Bail if no form on page
+if (document.forms[0] == null) return;
+
+// Iterate though elements
+for (var i = 0; i < document.forms[0].elements.length; i++) {
+  e = document.forms[0].elements[i];
+  if ((e.type == "text") || (e.type == "textarea")) {
+    e.focus();
+//    e.value = "";
+    break;
+  }
+}
+}
+
+</script>
+
+</head>
+<body onload="setFocus()">
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<h1>Listing students</h1>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Card Number</th>
+    <th>Hope ID</th>
+	<th>Email</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% @students.sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase } %>
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.lastname %></td>
+    <td><%= student.firstname %></td>
+    <td><%= student.diningcard %></td>
+    <td><%= student.hopeid %></td>
+    <td><%= student.email %></td>
+    <td><%= link_to 'Show', student %></td>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><%= link_to 'Destroy', student, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student', new_student_path %>

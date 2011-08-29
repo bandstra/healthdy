@@ -1,0 +1,22 @@
+<h1 id="notice"><%= notice %></h1>
+
+
+<table>
+	<tr>
+		<th>Card Number</th>
+		<th>Name</th>
+        <th>Date/Time</th>
+	</tr>
+	<tr>
+		<td><%= @login.swipe %></td>
+		<% student = Student.find_by_diningcard(@login.swipe) %>
+		<td><%= student.fullname %></td>
+		<td><%= @login.created_at %></td>
+	</tr>
+</table>
+
+<br />
+
+<%= link_to 'New Login', new_login_path %> |
+<%= link_to 'Edit', edit_login_path(@login) %> |
+<%= link_to 'Back', logins_path %>
