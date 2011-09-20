@@ -41,6 +41,16 @@
     <%= f.text_field :email %>
   </div>
 
+  <div class="field">
+    Section<br />
+    <%= f.radio_button :section, '1' %>
+	<%= f.label '1 (8:30am)'%>
+    <%= f.radio_button :section, '2' %>
+	<%= f.label '2 (9:30am)'%>
+  </div>
+
+  <br />
+
   <div class="actions">
     <%= f.submit %>
   </div>

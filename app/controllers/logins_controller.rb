@@ -9,7 +9,7 @@ class LoginsController < ApplicationController
       format.xml  { render :xml => @logins }
     end
   end
-
+  
   # GET /logins/1
   # GET /logins/1.xml
   def show
@@ -46,7 +46,7 @@ class LoginsController < ApplicationController
     
     respond_to do |format|
       if @login.save
-        format.html { redirect_to(@login, :notice => 'Login was successfully created.') }
+        format.html { redirect_to(@login, :notice => 'Login was successful.') }
         format.xml  { render :xml => @login, :status => :created, :location => @login }
       else
         format.html { render :action => "new" }

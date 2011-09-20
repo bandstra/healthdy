@@ -1,17 +1,32 @@
-<h1>Listing logins</h1>
+<h1>Class Session Logins</h1>
+
+<% @logins = Login.all(:order => 'created_at DESC') %>
 
 <table>
   <tr>
-    <th>Card Number</th>
-    <th>Created At</th>
+	<th>Student</th>
+	<th>Edit</th>
+	<th>Section</th>
+    <th>Card</th>
+    <th>Logged In</th>
     <th>Show</th>
     <th>Edit</th>
     <th>Destroy</th>
   </tr>
 
-<% @logins = Login.all(:order => 'created_at DESC') %>
 <% @logins.each do |login| %>
   <tr>
+	<% if student = Student.find_by_diningcard(login.swipe) %>
+	<% @studentid = student.id %>
+	<% section = student.section %>
+	<% student = student.lastname + ", " + student.firstname %>
+	<td><%= student %></td>
+	<td><%= link_to 'Edit', edit_student_path(@studentid) %></td>
+	<% else student = "* NO NAME"%>
+	<td><%= student %></td>
+	<td><%= link_to 'New', new_student_path %> </td>
+	<% end %>
+	<td><%= section %></td>
     <td><%= login.swipe %></td> 
 	<% t = login.created_at %>
     <td><%= t.strftime("%a, %b %d %H:%M %Z") %></td>
@@ -24,5 +39,4 @@
 
 <br />
 
-<%= link_to 'New Login', new_login_path %>
-<%= link_to 'Student List', students_path %>
+

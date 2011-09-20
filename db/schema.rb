@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828133156) do
+ActiveRecord::Schema.define(:version => 20110920011922) do
 
   create_table "cards", :force => true do |t|
     t.string   "number"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20110828133156) do
     t.string   "middleinitial"
     t.string   "diningcard"
     t.string   "email"
+    t.integer  "section"
   end
 
 end

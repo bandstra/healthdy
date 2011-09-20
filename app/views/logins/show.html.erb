@@ -1,22 +1,27 @@
-<h1 id="notice"><%= notice %></h1>
-
+<% if student = Student.find_by_diningcard(@login.swipe) %>
+<h2><%= student.firstname + " " + student.lastname + " successfully logged in!" %></h2>
+<% else student = "No Record"; end %>
 
 <table>
 	<tr>
 		<th>Card Number</th>
 		<th>Name</th>
+		<th>Section</th>
         <th>Date/Time</th>
 	</tr>
 	<tr>
 		<td><%= @login.swipe %></td>
 		<% student = Student.find_by_diningcard(@login.swipe) %>
+		<% login = Login.last %>
+		<% login.student_id = student.id %>
+		<% login.save %>
+				
 		<td><%= student.fullname %></td>
+		<td><%= student.section %></td>
 		<td><%= @login.created_at %></td>
 	</tr>
 </table>
 
 <br />
 
-<%= link_to 'New Login', new_login_path %> |
-<%= link_to 'Edit', edit_login_path(@login) %> |
-<%= link_to 'Back', logins_path %>
+<%= link_to 'New Login', new_login_path %>

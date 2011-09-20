@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Health Dynamics Attendance App</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 
@@ -27,9 +28,20 @@ for (var i = 0; i < document.forms[0].elements.length; i++) {
 </script>
 
 </head>
-<body onload="setFocus()">
-
-<%= yield %>
-
+<body onload="setFocus()" id="app">
+	<div id="banner">
+		<h1><%= @page_title || "Health Dynamics Attendance" %></h1>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<%= link_to 'New login', new_login_path %><br />
+			<%= link_to 'All class logins', logins_path %><br />
+			<%= link_to 'New student', new_student_path %><br />
+			<%= link_to 'List all Hope College students', students_path %><br />
+		</div>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>
